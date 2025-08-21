@@ -3,9 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { CountriesModule } from './countries/countries.module';
+import { AxiosModule } from './axios/axios.module';
 
 @Module({
-  imports: [ConfigModule, CountriesModule],
+  imports: [ConfigModule, CountriesModule, AxiosModule],
   controllers: [AppController],
   providers: [AppService],
 })

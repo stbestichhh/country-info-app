@@ -25,9 +25,14 @@ describe('AppController (e2e)', () => {
   });
 
   it('should get all countries', () => {
-    return request(app.getHttpServer())
-      .get('/api/v1/countries')
-      .expect(200)
-      .expect({ countries: [] });
+    return request(app.getHttpServer()).get('/countries').expect(200);
+  });
+
+  it('should get country info', () => {
+    return request(app.getHttpServer()).get('/countries/UA').expect(200);
+  });
+
+  it('should throw on wrong country code', () => {
+    return request(app.getHttpServer()).get('/countries/U').expect(404);
   });
 });
