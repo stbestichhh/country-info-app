@@ -6,6 +6,7 @@ import {
   HasMany,
   Model,
   PrimaryKey,
+  Table,
 } from 'sequelize-typescript';
 import { UserModel } from './user.model';
 import { EventModel } from './event.model';
@@ -15,6 +16,7 @@ export interface CalendarCreationAttributes {
   calendarName: string;
 }
 
+@Table({ tableName: 'calendars' })
 export class CalendarModel extends Model<
   CalendarModel,
   CalendarCreationAttributes

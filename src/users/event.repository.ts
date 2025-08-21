@@ -3,6 +3,7 @@ import { EventModel } from '../database/models/event.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { EventDto } from './dto/create-event-response.dto';
+import { v7 } from 'uuid';
 
 @Injectable()
 export class EventRepository extends AbstractRepository<EventModel> {
@@ -21,6 +22,7 @@ export class EventRepository extends AbstractRepository<EventModel> {
   ): Promise<EventModel[]> {
     const mappedEvents = selectedEvents.map((event: EventDto) => ({
       ...event,
+      eventId: v7(),
       calendarId,
     }));
 

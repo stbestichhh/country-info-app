@@ -6,6 +6,7 @@ import {
   ForeignKey,
   Model,
   PrimaryKey,
+  Table,
 } from 'sequelize-typescript';
 import { CalendarModel } from './calendar.model';
 
@@ -19,6 +20,7 @@ export interface EventCreationAttributes {
   launchYear?: number;
 }
 
+@Table({ tableName: 'events' })
 export class EventModel extends Model<EventModel, EventCreationAttributes> {
   @PrimaryKey
   @Column
@@ -46,7 +48,7 @@ export class EventModel extends Model<EventModel, EventCreationAttributes> {
   countryCode!: string;
 
   @AllowNull
-  @Default(false)
+  @Default(null)
   @Column
   launchYear?: number;
 
