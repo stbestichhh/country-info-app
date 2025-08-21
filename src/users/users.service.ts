@@ -11,6 +11,9 @@ import { AxiosService } from '../axios/axios.service';
 import { CreateCalendarBodyDto } from './dto/create-calendar-body.dto';
 import { CalendarRepository } from './calendar.repository';
 import { CreateCalendarResponseDto } from './dto/create-calendar-response.dto';
+import { CreateUserResponseDto } from './dto/create-user-response.dto';
+import { CreateUserBodyDto } from './dto/create-user-body.dto';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UsersService {
@@ -18,6 +21,7 @@ export class UsersService {
     private readonly config: ConfigService,
     private readonly eventRepository: EventRepository,
     private readonly calendarRepository: CalendarRepository,
+    private readonly userRepository: UserRepository,
     private readonly axiosService: AxiosService,
   ) {}
 
@@ -65,5 +69,11 @@ export class UsersService {
       userId,
       calendarName: bodyDto.calendarName,
     });
+  }
+
+  public async createUser(
+    bodyDto: CreateUserBodyDto,
+  ): Promise<CreateUserResponseDto> {
+    return this.userRepository.insert(bodyDto);
   }
 }
