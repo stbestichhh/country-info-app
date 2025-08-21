@@ -1,3 +1,7 @@
+## Description
+
+Api for getting information about countries and adding to calendar holidays. App handles getting coutries, country info, creating users, creating user calendars and adding holidays to this calendars. This API uses PostgreSQL databse and Repository pattern. For the repository patter I have user nest-sequelize-repositry package which is developed by myself. Also it is provided swagger documentation and few unit and e2e test using Jest.
+
 ## Project setup
 
 ```bash
