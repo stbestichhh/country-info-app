@@ -1,10 +1,31 @@
 services:
-  server:
+  api:
     build:
       context: .
+      dockerfile: Dockerfile
+    container_name: countries-info
     env_file:
       - .env
-    environment:
-      NODE_ENV: production
     ports:
-      - "${PORT}:${PORT}"
+      - "${PORT:-9180}:9180"
+    depends_on:
+      - postgres
+    command: pnpm start:dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
