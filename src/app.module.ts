@@ -4,9 +4,17 @@ import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { CountriesModule } from './countries/countries.module';
 import { AxiosModule } from './axios/axios.module';
+import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [ConfigModule, CountriesModule, AxiosModule],
+  imports: [
+    ConfigModule,
+    CountriesModule,
+    AxiosModule,
+    DatabaseModule,
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
