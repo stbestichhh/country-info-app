@@ -12,7 +12,7 @@ async function bootstrap(): Promise<void> {
     cors: true,
   });
 
-  const logger = app.get<Logger>(Logger);
+  const logger = new Logger(bootstrap.name);
   const config = app.get<ConfigService>(ConfigService);
 
   const HOST = config.getOrThrow<string>(EnvParams.HOST);

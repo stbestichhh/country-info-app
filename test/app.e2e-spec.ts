@@ -23,4 +23,11 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('should get all countries', () => {
+    return request(app.getHttpServer())
+      .get('/api/v1/countries')
+      .expect(200)
+      .expect({ countries: [] });
+  });
 });
